@@ -195,6 +195,12 @@ class MarketingAssistant {
                 }
             }
             
+            // Check if this is a structured blog/LinkedIn response
+            if (responseData.post || responseData.imageUrl || responseData.imageBinary) {
+                console.log('Detected structured blog/LinkedIn response');
+                return this.formatBlogResponse(responseData);
+            }
+            
             // Handle text response
             const responseText = responseData.output || responseData.text || responseData.message || JSON.stringify(responseData);
             console.log('Final response text:', responseText);
@@ -279,6 +285,34 @@ Return only the cleaned, readable message.`;
     createImageResponse(imageUrl, fileName) {
         // Create a special response format for direct images
         return `Here's your generated image: [${fileName}](${imageUrl})`;
+    }
+
+    formatBlogResponse(responseData) {
+        console.log('Formatting blog response:', responseData);
+        
+        let formattedResponse = '';
+        
+        // Add the main output text if available
+        if (responseData.output) {
+            formattedResponse += responseData.output + '\n\n';
+        }
+        
+        // Add the blog post content
+        if (responseData.post) {
+            formattedResponse += responseData.post + '\n\n';
+        }
+        
+        // Add image if available
+        if (responseData.imageUrl && responseData.imageTitle) {
+            formattedResponse += `[${responseData.imageTitle}](${responseData.imageUrl})`;
+        } else if (responseData.imageBinary) {
+            // Handle binary image data
+            const imageUrl = `data:image/png;base64,${responseData.imageBinary}`;
+            const title = responseData.imageTitle || 'Generated Image';
+            formattedResponse += `[${title}](${imageUrl})`;
+        }
+        
+        return formattedResponse.trim();
     }
 
     handleFileSelection(file) {
