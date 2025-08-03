@@ -316,7 +316,7 @@ Return only the cleaned, readable message.`;
         inputContainer.insertBefore(preview, inputContainer.firstChild);
         
         // Update placeholder
-        this.messageInput.placeholder = `Describe what you want to do with ${fileName}...`;
+        this.messageInput.placeholder = `Tell Buzzbot what you want to do with ${fileName}...`;
     }
 
     removeFile() {
@@ -325,7 +325,7 @@ Return only the cleaned, readable message.`;
         if (preview) {
             preview.remove();
         }
-        this.messageInput.placeholder = "Type your message here... (e.g., 'Create a blog post about AI marketing for small businesses')";
+        this.messageInput.placeholder = "Chat with Buzzbot... (e.g., 'Create a LinkedIn post about digital marketing trends')";
         this.fileInput.value = '';
     }
 

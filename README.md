@@ -1,10 +1,10 @@
-# Marketing AI Assistant
+# Buzzbot - AI Marketing Assistant
 
-A modern web frontend for your n8n marketing automation workflows. Create content, generate images, and manage your marketing tasks with AI assistance.
+Your AI-powered marketing companion. A modern web frontend for n8n marketing automation workflows. Create content, generate images, and manage your marketing tasks with Buzzbot's AI assistance.
 
 ## Features
 
-- 🤖 **AI-Powered Chat Interface** - Natural conversation with your marketing AI
+- 🤖 **AI-Powered Chat Interface** - Natural conversation with Buzzbot
 - 🎨 **Image Generation & Editing** - Create and modify images directly in chat
 - 📝 **Content Creation** - Generate blog posts, LinkedIn content, and videos
 - 🖼️ **Inline Image Display** - Images appear directly in chat, not as links
@@ -24,8 +24,8 @@ python3 -m http.server 8000
 ### Docker Deployment
 ```bash
 # Build and run
-docker build -t marketing-ai-frontend .
-docker run -p 80:80 marketing-ai-frontend
+docker build -t buzzbot .
+docker run -p 3000:3000 buzzbot
 ```
 
 ### Docker Compose
@@ -67,9 +67,9 @@ The frontend sends requests in this format:
 ## Architecture
 
 ```
-Frontend (React-like) → n8n Webhook → Marketing Agent → Sub-workflows
-                                                     ↓
-                     ← Formatted Response ← Tools (Blog, Image, Video)
+Buzzbot Frontend → n8n Webhook → Marketing Agent → Sub-workflows
+                                                 ↓
+               ← Formatted Response ← Tools (Blog, Image, Video)
 ```
 
 ## Browser Support
